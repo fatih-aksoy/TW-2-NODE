@@ -1,4 +1,4 @@
-/*------------------------------------------------------------------*/
+/*------------------------------------------------------------------*
 const Person = class {
   constructor(name) {
     this.name = name;
@@ -57,38 +57,50 @@ const account1 = new BankAccount("Inzar",5000);
 account1.deposit(300);
 account1.withdraw(5000);
 /*------------------------------------------------------------------*/
-// class Person {
-//   constructor(name) {
-//     this.name = name;
-//   }
-//   sayName() {
-//     // console.log(`Benim ismim ${this.name}`);
-//   }
-// }
-// const semih = new Person("Semih");
-// semih.sayName();
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
 
-// class bankAccount extends Person {
-//   #balance;
-//   constructor(name, balance) {
-//     super(name);
-//     this.#balance = balance;
-//   }
-//   deposit(value) {
-//     this.#balance = this.#balance + value;
-//     console.log(`Bakiye:${this.#balance}`);
-//   }
-//   withdraw(value) {
-//     if (value > this.#balance && this.#balance > 0) {
-//       console.log("Bakiye yetersiz");
-//     } else {
-//       this.#balance = this.#balance - value;
-//       console.log(`Bakiye:${this.#balance}`);
-//     }
-//   }
-// }
+  sayName() {
+    console.log(`Benim ismim ${this.name}`);
+  }
+}
 
-// const semihAccount = new bankAccount("semih", 1000);
-// semihAccount.deposit(500);
-// semihAccount.withdraw(500);
-// console.log();
+class BankAccount extends Person {
+  #balance;
+
+  constructor(name, balance) {
+    super(name);
+    this.#balance = balance;
+  }
+  deposit(value) {
+    this.#balance += value;
+    // console.log(`Bakiye : ${this.#balance}`);
+  }
+  withdraw(value) {
+    if (value > this.#balance && this.#balance > 0) {
+      console.log("bakiye yetersiz");
+    } else {
+      this.#balance -= value;
+    //   console.log(`Bakiye : ${this.#balance}`);
+    }
+  }
+
+  balance(){
+    console.log(`Bakiye : ${this.#balance}`);
+  }
+
+}
+// const semih = new Person("Semih")
+const semihAccount = new BankAccount("semih", -500);
+console.log("🚀 ~ file: oop.js:502 ~ semihAccount:", semihAccount)
+semihAccount.deposit(200);
+semihAccount.withdraw(500);
+semihAccount.balance();
+
+
+
+// let ahmet = {
+//     name: "ahmet",
+//     sayName: () => console.log(`Benim ismim ${this.name}`) }
